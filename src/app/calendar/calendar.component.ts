@@ -258,7 +258,7 @@ export class CalendarComponent {
           this.events.push({
             title,
             color,
-            start: moment(date).toDate()
+            start: moment(date).toDate(),
           });
         });
       });

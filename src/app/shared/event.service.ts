@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 
 export interface EventModal {
-  id: string;
+  id?: string;
   title: string;
-  fromdate: any;
-  todate: string;
+  fromdate: string;
+  todate?: string;
   category: string;
   repeat: string;
   description?: string;
-  rrule: {
+  type: string;
+  offset?: number;
+  user_id?: string;
+  rrule?: {
       freq?: any,
       bymonthday?: any,
       byweekday?: any,
@@ -25,6 +28,7 @@ export class EventService {
   constructor() { }
 
   events: EventModal[];
+  
 
 
 }
