@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
     message: string = null;
-    authObs: Observable<{ msg: string, userdata: UserData}>;
+    authObs: Observable<{ msg: string, token: string}>;
     isLoginMode = true;
     constructor(private authService: AuthService, private router: Router) { }
 
@@ -25,14 +25,18 @@ export class AuthComponent implements OnInit {
       if (this.isLoginMode) {
         let obj: UserData;
         obj = f.value;
-        console.log(obj);
-        
         this.authObs = this.authService.onSignin(obj);
         f.reset();
         this.authObs.subscribe(
           (res) => {
             console.log(res);
-            
+            if (res.token) {
+              localStorage.setItem('token', JSON.stringify(res.token));
+              this.authService.user.next(res.token);
+              this.router.navigate(['/events/new']);
+            } else {
+              this.message = res.msg;
+            }
             // if (res.userdata) {
             //   localStorage.setItem('user', JSON.stringify(res.userdata));
             //   this.authService.user.next(res.userdata);
@@ -51,14 +55,22 @@ export class AuthComponent implements OnInit {
         f.reset();
         this.authObs.subscribe(
           (res) => {
-            if (res.userdata) {
-              localStorage.setItem('user', JSON.stringify(res.userdata));
-              this.authService.user.next(res.userdata);
-              this.message = res.msg;
+            console.log(res);
+            if (res.token) {
+              localStorage.setItem('token', JSON.stringify(res.token));
+              this.authService.user.next(res.token);
               this.router.navigate(['/events/new']);
             } else {
               this.message = res.msg;
             }
+            // if (res.userdata) {
+            //   localStorage.setItem('user', JSON.stringify(res.userdata));
+            //   this.authService.user.next(res.userdata);
+            //   this.message = res.msg;
+            //   this.router.navigate(['/events/new']);
+            // } else {
+            //   this.message = res.msg;
+            // }
           }
         );
       }

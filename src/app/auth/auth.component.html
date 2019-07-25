@@ -1,9 +1,12 @@
-<div class="container">
-    <div class="alert alert-danger" *ngIf="message" style="margin-top: 7px">
-        {{ message }}
-    </div>
-<div class="row" style="margin-top: 7px">
-        <div class="col-12">
+<div style="margin: auto; margin-top: 20px">
+    <h2 style="text-align: center">User {{ isLoginMode ? 'Login' : 'SignUp'}}</h2>
+    
+    <div class="row" style="margin-top: 7px">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div style="text-align: center" class="alert alert-danger" *ngIf="message" style="margin-top: 7px">
+                {{ message }}
+            </div>
             <form #f="ngForm" (ngSubmit)="onSubmit(f)">
                 <div class="form-group" *ngIf="!isLoginMode">
                     <label for="fname">First Name</label>

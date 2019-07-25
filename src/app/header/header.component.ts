@@ -6,28 +6,31 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit, OnChanges {
-   isAuth = false;
-
+export class HeaderComponent implements OnInit {
+  isAuth = false;
+  //  fname: string = null;
+   
   constructor(private authService: AuthService) { }
-
   ngOnInit() {
-    const userData = localStorage.getItem('user');
-    this.isAuth = !!userData;
+    this.authService.user.subscribe( (token) => {
+      this.isAuth = !!token;
+    } );
+
+    // this.isAuth = this.authService.isLoggedIn();
+    // console.log('ng oninit:' + this.isAuth);
+    
     
   //   this.authService.user.subscribe(
   //     (userData) => {
-  //       console.log(userData);
-        
+  //       if (userData) {
+  //         this.fname = userData.fname;
+  //       }
   //       this.isAuth = !!userData;
   //     }
   //   );
-  // }
+     }
+     onLogout() {
+       this.authService.onLogout();
+     }
 
-}
-
-ngOnChanges () {
-  const userData = localStorage.getItem('user');
-  this.isAuth = !!userData;
-}
 }

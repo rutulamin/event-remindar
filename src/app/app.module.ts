@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarDateFormatter, CalendarModule, CalendarMomentDateFormatter,
@@ -19,6 +19,9 @@ import { EventFormComponent } from './events/event-create/event-form/event-form.
 import { ReminderFormComponent } from './events/event-create/reminder-form/reminder-form.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EventListComponent } from './event-list/event-list.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
 
 // export function momentAdapterFactory() {
 //   return adapterFactory(moment);
@@ -34,6 +37,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EventCreateComponent,
     EventFormComponent,
     ReminderFormComponent,
+    EventListComponent,
+    ProfileComponent,
   ],
   imports: [
     HttpClientModule,
@@ -60,6 +65,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     {
       provide: MOMENT,
       useValue: moment
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

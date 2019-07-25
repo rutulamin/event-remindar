@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { EventsComponent } from './events/events.component';
 import { AuthComponent } from './auth/auth.component';
 import { EventCreateComponent } from './events/event-create/event-create.component';
 import { EventFormComponent } from './events/event-create/event-form/event-form.component';
 import { ReminderFormComponent } from './events/event-create/reminder-form/reminder-form.component';
+import { EventListComponent } from './event-list/event-list.component';
+import { AuthGaurdService } from './auth/auth-gaurd.service';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/events/new', pathMatch: 'full' },
-    { path: 'events', component: EventsComponent,
+    { path: 'events', component: EventsComponent, canActivate: [AuthGaurdService],
     children: [
         { path: 'new', component: EventCreateComponent,
         children: [
@@ -17,6 +20,12 @@ const appRoutes: Routes = [
         ]
         },
     ]
+    },
+    {
+        path: 'event-list', component: EventListComponent, canActivate: [AuthGaurdService]
+    },
+    {
+        path: 'profile', component: ProfileComponent, canActivate: [AuthGaurdService]
     },
     { path: 'auth', component: AuthComponent }
 ];
