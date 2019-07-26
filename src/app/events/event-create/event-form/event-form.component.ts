@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { EventModal } from 'src/app/shared/event.service';
+import { EventModal, EventService } from 'src/app/shared/event.service';
 import moment from 'moment-timezone';
 import RRule from 'rrule';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -12,7 +13,8 @@ import RRule from 'rrule';
   })
 
 export class EventFormComponent implements OnInit {
-    events: EventModal;
+    eventObs: Observable<{msg: string}>;
+    events: EventModal = null;
     fdate: string;
     category: { name: string}[] = [
         { name: 'General Metting' },
@@ -27,23 +29,34 @@ export class EventFormComponent implements OnInit {
         { name: 'Monthly'},
         { name: 'Yearly' }
     ];
-    constructor() { }
+    constructor( private eventService: EventService) { }
 
     ngOnInit() {
     }
+
     onAdd(f: NgForm) {
-        const d1 = new Date(f.value.fromdate).toISOString();
-        const d2 = new Date(f.value.todate).toISOString();
+        const d1 = new Date(f.value.startdate).toISOString();
+        const d2 = new Date(f.value.enddate).toISOString();
         const date1 = moment(d1.toString()).format('YYYY-MM-DD HH:mm:ss');
         const date2 = moment(d2.toString()).format('YYYY-MM-DD HH:mm:ss');
         const offset = +moment(moment(d2.toString()).format('YYYYMMDD')).diff(moment(moment(d1.toString()).format('YYYYMMDD')), 'days');
 
         this.events = f.value;
-        this.events.fromdate = date1;
-        this.events.todate = date2;
+        this.events.startdate = date1;
+        this.events.enddate = date2;
         this.events.offset = offset;
-        console.log(this.events);
-        
+        this.events.type = 'event';
+
+        this.eventObs = this.eventService.onAdd(this.events);
+
+        this.eventObs.subscribe(
+            (res) => {
+              this.eventService.msg.next({message: res.msg, status: true});
+            }, (err) => {
+              this.eventService.msg.next({message: err.error, status: false});
+            }
+          );
+          
         // const monthday = +date1.format('DD');
         // const month = +date1.format('MM');
         // let weekday = date1.weekday();

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
     message: string = null;
-    authObs: Observable<{ msg: string, token: string}>;
+    authObs: Observable<{ msg: string, token: string }>;
     isLoginMode = true;
     constructor(private authService: AuthService, private router: Router) { }
 

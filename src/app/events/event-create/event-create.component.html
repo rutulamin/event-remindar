@@ -1,4 +1,10 @@
 <h1>Add New</h1>
+<div style="text-align: center" class="alert alert-success" *ngIf="msg" style="margin-top: 3px">
+    {{ msg }}
+</div>
+<div style="text-align: center" class="alert alert-danger" *ngIf="err" style="margin-top: 3px">
+    {{ err }}
+</div>
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a class="nav-link" routerLink="../new/event" routerLinkActive="active" >Event</a>
