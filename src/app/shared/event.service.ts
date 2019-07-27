@@ -22,6 +22,16 @@ export interface EventModal {
   };
 }
 
+export interface ResData {
+  title: string;
+  location: string;
+  category: string;
+  startdate: string;
+  enddate?: string;
+  repeat: string;
+  type: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,5 +43,8 @@ export class EventService {
 
   onAdd(events: EventModal) {
     return this.http.post<{ msg: string }>(environment.APIURL + 'event', events);
+  }
+  getEvent() {
+    return this.http.get<{resData: ResData[]}>(environment.APIURL + 'event');
   }
 }
