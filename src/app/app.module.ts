@@ -23,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventListComponent } from './event-list/event-list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { MatTabsModule } from '@angular/material';
 
 // export function momentAdapterFactory() {
 //   return adapterFactory(moment);

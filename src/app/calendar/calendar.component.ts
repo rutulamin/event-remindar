@@ -1,13 +1,13 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ChangeDetectionStrategy, ViewChild, TemplateRef } from '@angular/core';
-import RRule from 'rrule';
-import moment from 'moment-timezone';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent,
   CalendarDayViewBeforeRenderEvent, CalendarMonthViewBeforeRenderEvent,
   CalendarView, CalendarWeekViewBeforeRenderEvent } from 'angular-calendar';
+  import RRule from 'rrule';
+  import moment from 'moment-timezone';
 // import { colors } from '../demo-utils/colors';
 import { ViewPeriod } from 'calendar-utils';
 
@@ -39,7 +39,7 @@ interface RecurringEvent {
   };
 }
 
-// moment.tz.setDefault('Utc');
+//moment.tz.setDefault('Utc');
 
 
 @Component({

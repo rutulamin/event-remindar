@@ -1,186 +1,315 @@
-<!-- <div class="row">
-    <div class="col-lg-6">
-        <h2>All Event</h2>
-        <h4>Today Event</h4>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Sr.No.</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End Date</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </table>  
-        <h4>Upcoming Event</h4>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Sr.No.</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End Date</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </table>  
-        <h4>Old Event</h4>
-        <table class="table table-striped">
-            <thead>
-                    <tr>
-                        <th scope="col">Sr.No.</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End Date</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </table>  
-    </div>
-    <div class="col-lg-6">
-        <h2>All Reminder</h2>
-        <h4>Today Event</h4>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Sr.No.</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">Category</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </table>    
-        <h4>Upcoming Event</h4>
-        <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Sr.No.</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">Category</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-            </tbody>
-        </table>  
-        <h4>Old Event</h4>
-        <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Sr.No.</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">Category</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-        </table>  
-    </div>
-</div> -->
+<mat-tab-group animationDuration="1000ms">
+    <mat-tab label="Event">
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Today's Event
+                </mat-panel-title>
+                <mat-panel-description>
+                    See Your Today's Event
+                </mat-panel-description>
+                </mat-expansion-panel-header>
+                    <table mat-table [dataSource]="dataSource1">
+                        <ng-container matColumnDef="title">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Title </th>
+                            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="startdate">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Start Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.startdate}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="enddate">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> End Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.enddate}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="category">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Category </th>
+                            <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="repeat">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Repeat </th>
+                            <td mat-cell *matCellDef="let element"> {{element.repeat}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="location">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Location </th>
+                            <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+                        </ng-container>
+                        
+                        
+                            <!-- <ng-container matColumnDef="delete">
+                                <th mat-header-cell *matHeaderCellDef> Delete </th>
+                                <td mat-cell *matCellDef="let element">
+                                <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+                                    <mat-icon class="mat-18">delete</mat-icon>
+                                </button>
+                                </td>
+                            </ng-container> -->
+                        
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 25]" style="font-size: 16px"></mat-paginator>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Upcoming Event
+                </mat-panel-title>
+                <mat-panel-description>
+                    See Your Upcoming Event
+                </mat-panel-description>
+                </mat-expansion-panel-header>
+                    <table mat-table [dataSource]="dataSource2">
+                        <ng-container matColumnDef="title">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Title </th>
+                            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="startdate">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Start Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.startdate}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="enddate">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> End Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.enddate}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="category">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Category </th>
+                            <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="repeat">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Repeat </th>
+                            <td mat-cell *matCellDef="let element"> {{element.repeat}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="location">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Location </th>
+                            <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+                        </ng-container>
+                        
+                        
+                            <!-- <ng-container matColumnDef="delete">
+                                <th mat-header-cell *matHeaderCellDef> Delete </th>
+                                <td mat-cell *matCellDef="let element">
+                                <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+                                    <mat-icon class="mat-18">delete</mat-icon>
+                                </button>
+                                </td>
+                            </ng-container> -->
+                        
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 25]" style="font-size: 16px"></mat-paginator>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Old Event
+                </mat-panel-title>
+                <mat-panel-description>
+                    See Your Old Event
+                </mat-panel-description>
+                </mat-expansion-panel-header>
+                    <table mat-table [dataSource]="dataSource3">
+                        <ng-container matColumnDef="title">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Title </th>
+                            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="startdate">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Start Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.startdate}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="enddate">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> End Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.enddate}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="category">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Category </th>
+                            <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="repeat">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Repeat </th>
+                            <td mat-cell *matCellDef="let element"> {{element.repeat}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="location">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Location </th>
+                            <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+                        </ng-container>
+                        
+                        
+                            <!-- <ng-container matColumnDef="delete">
+                                <th mat-header-cell *matHeaderCellDef> Delete </th>
+                                <td mat-cell *matCellDef="let element">
+                                <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+                                    <mat-icon class="mat-18">delete</mat-icon>
+                                </button>
+                                </td>
+                            </ng-container> -->
+                        
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 25]" style="font-size: 16px"></mat-paginator>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-tab>
+    <mat-tab label="Reminder">
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Today's Reminder
+                </mat-panel-title>
+                <mat-panel-description>
+                    See Your Today's Reminder
+                </mat-panel-description>
+                </mat-expansion-panel-header>
+                    <table mat-table [dataSource]="dataSource4">
+                        <ng-container matColumnDef="title">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Title </th>
+                            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="startdate">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Start Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.startdate}} </td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="category">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Category </th>
+                            <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                        </ng-container>
+            
+                        <ng-container matColumnDef="repeat">
+                            <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Repeat </th>
+                            <td mat-cell *matCellDef="let element"> {{element.repeat}} </td>
+                        </ng-container>
+                        
+                            <!-- <ng-container matColumnDef="delete">
+                                <th mat-header-cell *matHeaderCellDef> Delete </th>
+                                <td mat-cell *matCellDef="let element">
+                                <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+                                    <mat-icon class="mat-18">delete</mat-icon>
+                                </button>
+                                </td>
+                            </ng-container> -->
+                        
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                    </table>
+                    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 25]" style="font-size: 16px"></mat-paginator>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Upcoming Reminder
+                </mat-panel-title>
+                <mat-panel-description>
+                    See Your Upcoming Reminder
+                </mat-panel-description>
+                </mat-expansion-panel-header>
+                    <table mat-table [dataSource]="dataSource5">
+                        <ng-container matColumnDef="title">
+                        <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Title </th>
+                        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="startdate">
+                        <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Start Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.startdate}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="category">
+                        <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Category </th>
+                        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="repeat">
+                        <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Repeat </th>
+                        <td mat-cell *matCellDef="let element"> {{element.repeat}} </td>
+                        </ng-container>
+                    
+                        <!-- <ng-container matColumnDef="delete">
+                            <th mat-header-cell *matHeaderCellDef> Delete </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+                                    <mat-icon class="mat-18">delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container> -->
+                    
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                    </table>
+                    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 25]" style="font-size: 16px"></mat-paginator>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Old Reminder
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        See Your Old Reminder
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                    <table mat-table [dataSource]="dataSource6">
+                        <ng-container matColumnDef="title">
+                        <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Title </th>
+                        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="startdate">
+                        <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Start Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.startdate}} </td>
+                        </ng-container>
+                    
+                        <ng-container matColumnDef="category">
+                        <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Category </th>
+                        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                        </ng-container>
+        
+                        <ng-container matColumnDef="repeat">
+                        <th mat-header-cell *matHeaderCellDef style="font-size: 17px"> Repeat </th>
+                        <td mat-cell *matCellDef="let element"> {{element.repeat}} </td>
+                        </ng-container>
+                    
+                    
+                        <!-- <ng-container matColumnDef="delete">
+                            <th mat-header-cell *matHeaderCellDef> Delete </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+                                    <mat-icon class="mat-18">delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container> -->
+                    
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                    </table>
+                    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 25]" style="font-size: 16px"></mat-paginator>
+            </mat-expansion-panel>
+        
+        </mat-accordion>
+            
+    </mat-tab>
+</mat-tab-group>
 
-
-
-<table mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef> Title </th>
-    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-  </ng-container>
- 
-  <ng-container matColumnDef="dateOfBirth">
-    <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
-    <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date}} </td>
-  </ng-container>
- 
-  <ng-container matColumnDef="address">
-    <th mat-header-cell *matHeaderCellDef> Address </th>
-    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
-  </ng-container>
- 
-  <ng-container matColumnDef="details">
-    <th mat-header-cell *matHeaderCellDef> Details </th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-icon-button color="primary" (click)="redirectToDetails(element.id)">
-          <mat-icon class="mat-18">reorder</mat-icon>
-      </button>
-    </td>
-  </ng-container>
- 
-  <ng-container matColumnDef="update">
-      <th mat-header-cell *matHeaderCellDef> Update </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="accent" (click)="redirectToUpdate(element.id)">
-            <mat-icon class="mat-18">system_update</mat-icon>
-        </button>
-      </td>
-    </ng-container>
- 
-    <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef> Delete </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
-              <mat-icon class="mat-18">delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
- 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-<mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20]">
-</mat-paginator>

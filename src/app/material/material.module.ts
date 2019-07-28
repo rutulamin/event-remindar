@@ -8,11 +8,15 @@ import * as Material from '@angular/material';
     Material.MatTableModule,
     Material.MatIconModule,
     Material.MatPaginatorModule,
+    Material.MatTabsModule,
+    Material.MatExpansionModule
   ],
   exports: [
     Material.MatTableModule,
     Material.MatIconModule,
     Material.MatPaginatorModule,
+    Material.MatTabsModule,
+    Material.MatExpansionModule
   ],
   declarations: []
 })
