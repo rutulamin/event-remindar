@@ -3,14 +3,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { CalendarDateFormatter, CalendarModule, CalendarMomentDateFormatter,
-  DateAdapter, MOMENT } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import moment from 'moment-timezone';
-// import { DemoUtilsModule } from '../demo-utils/module';
 
 import { AppComponent } from './app.component';
-import { CalendarComponent } from './calendar/calendar.component';
 import { HeaderComponent } from './header/header.component';
 import { EventsComponent } from './events/events.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +18,8 @@ import { EventListComponent } from './event-list/event-list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { MatTabsModule } from '@angular/material';
+import { DemoModule } from './calender-view/calendar/calendar.module';
+import { DemoUtilsModule } from './calender-view/calendar-utils/calendar-utils.module';
 
 // export function momentAdapterFactory() {
 //   return adapterFactory(moment);
@@ -32,7 +28,6 @@ import { MatTabsModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent,
     HeaderComponent,
     EventsComponent,
     AuthComponent,
@@ -43,32 +38,16 @@ import { MatTabsModule } from '@angular/material';
     ProfileComponent,
   ],
   imports: [
+    DemoModule,
+    DemoUtilsModule,
     MaterialModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule,
     BrowserAnimationsModule,
-    CalendarModule.forRoot(
-    {
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    },
-    {
-      dateFormatter: {
-        provide: CalendarDateFormatter,
-        useClass: CalendarMomentDateFormatter
-      }
-    },
-    // DemoUtilsModule
-    )
   ],
   providers: [
-    {
-      provide: MOMENT,
-      useValue: moment
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
