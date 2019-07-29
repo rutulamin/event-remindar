@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { EventService, resDataEvent, EventModal } from '../shared/event.service';
+import { EventService, ResDataEvent1, EventModal } from '../shared/event.service';
 import { Observable } from 'rxjs';
 import { MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material';
@@ -12,7 +12,7 @@ import { MatPaginator } from '@angular/material';
 })
 export class EventListComponent implements OnInit, AfterViewInit {
 
-  eventObs: Observable<resDataEvent>;
+  eventObs: Observable<ResDataEvent1>;
 
   @ViewChild(MatPaginator, {static: false}) paginator1: MatPaginator;
   @ViewChild(MatPaginator, {static: false}) paginator2: MatPaginator;

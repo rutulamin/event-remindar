@@ -25,10 +25,10 @@ export class AuthService {
   constructor( private http: HttpClient, private router: Router) { }
 
   onSignup(data: UserData) {
-    return this.http.post<{ msg: string, token: string }>('http://localhost:3000/api/user/register', data);
+    return this.http.post<{ msg: string, token: string }>('http://192.168.2.78:3000/api/user/register', data);
   }
   onSignin(data: UserData) {
-    return this.http.post<{ msg: string, token: string}>('http://localhost:3000/api/user/login', data);
+    return this.http.post<{ msg: string, token: string}>('http://192.168.2.78:3000/api/user/login', data);
   }
   onLogout() {
     localStorage.removeItem('token');

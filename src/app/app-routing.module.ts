@@ -8,9 +8,10 @@ import { ReminderFormComponent } from './events/event-create/reminder-form/remin
 import { EventListComponent } from './event-list/event-list.component';
 import { AuthGaurdService } from './auth/auth-gaurd.service';
 import { ProfileComponent } from './profile/profile.component';
+import { EventdetailComponent } from './events/eventdetail/eventdetail.component';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/events/new', pathMatch: 'full' },
+    { path: '', redirectTo: '/events/new/event', pathMatch: 'full' },
     { path: 'events', component: EventsComponent, canActivate: [AuthGaurdService],
     children: [
         { path: 'new', component: EventCreateComponent,
@@ -19,6 +20,9 @@ const appRoutes: Routes = [
             { path: 'remindar', component: ReminderFormComponent}
         ]
         },
+        {
+            path: ':id', component: EventdetailComponent
+        }
     ]
     },
     {

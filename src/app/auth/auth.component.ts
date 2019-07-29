@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
             if (res.token) {
               localStorage.setItem('token', JSON.stringify(res.token));
               this.authService.user.next(res.token);
-              this.router.navigate(['/events/new']);
+              this.router.navigate(['/events/new/event']);
             } else {
               this.message = res.msg;
             }
@@ -59,7 +59,7 @@ export class AuthComponent implements OnInit {
             if (res.token) {
               localStorage.setItem('token', JSON.stringify(res.token));
               this.authService.user.next(res.token);
-              this.router.navigate(['/events/new']);
+              this.router.navigate(['/events/new/event']);
             } else {
               this.message = res.msg;
             }

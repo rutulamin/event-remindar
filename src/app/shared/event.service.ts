@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
+import RRule from 'rrule';
 
 export interface EventModal {
-  id?: string;
+  id: string;
   title: string;
+  start: Date;
   startdate: string;
   enddate?: string;
   category: string;
@@ -15,39 +17,34 @@ export interface EventModal {
   offset?: number;
   location?: string;
   user_id?: string;
-  rrule?: {
-      freq?: any,
-      bymonthday?: any,
-      byweekday?: any,
+  endtime?: string;
+  rrule?: RRule;
+}
+
+export interface ResDataEvent1 {
+  data: {
+    todayEvent: EventModal[];
+    upcomingEvent: EventModal[];
+    todayReminder: EventModal[];
+    oldReminder: EventModal[];
+    upcomingReminder: EventModal[];
+    oldEvent: EventModal[];
   };
 }
 
-export interface ResDataModel {
-  id: string;
-  title: string;
-  location?: string;
-  category: string;
-  startdate: string;
-  enddate?: string;
-  repeat: string;
-  type: string;
-}
-export interface resDataEvent {
+export interface ResDataEvent2 {
   data: {
-    todayEvent: ResDataModel[];
-    upcomingEvent: ResDataModel[];
-    todayReminder: ResDataModel[];
-    oldReminder: ResDataModel[];
-    upcomingReminder: ResDataModel[];
-    oldEvent: ResDataModel[];
+    Event1: EventModal[],
+    Reminder1: EventModal[]
   };
 }
+
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-
+  eventId: any = '';
   constructor(private http: HttpClient) { }
   msg = new Subject<{message: string, status: boolean}>();
 
@@ -55,6 +52,12 @@ export class EventService {
     return this.http.post<{ msg: string }>(environment.APIURL + 'event', events);
   }
   getEvent() {
-    return this.http.get<resDataEvent>(environment.APIURL + 'event');
+    return this.http.get<ResDataEvent1>(environment.APIURL + 'event');
+  }
+  fetchEvent() {
+    return this.http.get<ResDataEvent2>(environment.APIURL + 'event/calendar-event');
+  }
+  getEventById(id: string) {
+    return this.http.get<{data: EventModal}>(environment.APIURL + 'event/' + id);
   }
 }

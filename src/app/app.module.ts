@@ -20,6 +20,7 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { MatTabsModule } from '@angular/material';
 import { DemoModule } from './calender-view/calendar/calendar.module';
 import { DemoUtilsModule } from './calender-view/calendar-utils/calendar-utils.module';
+import { EventdetailComponent } from './events/eventdetail/eventdetail.component';
 
 // export function momentAdapterFactory() {
 //   return adapterFactory(moment);
@@ -36,6 +37,7 @@ import { DemoUtilsModule } from './calender-view/calendar-utils/calendar-utils.m
     ReminderFormComponent,
     EventListComponent,
     ProfileComponent,
+    EventdetailComponent,
   ],
   imports: [
     DemoModule,

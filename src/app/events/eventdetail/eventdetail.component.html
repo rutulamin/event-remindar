@@ -1,0 +1,16 @@
+<hr />
+<div class="container" style="margin-top: 10px">
+    <div class="row">
+        <div class="btn btn-primary" [routerLink]="['/events/new/event']">Add New</div>
+    </div>
+    <div class="row" style="margin-top: 10px" >
+        <div class="col-12">
+            <h2>Event Detail</h2>
+            <div><strong>Title:</strong>{{ EventData.title }}</div>
+            <div><strong>Start Date:</strong>{{ EventData.startdate }}</div>
+            <div><strong>End Date:</strong>{{ EventData.enddate }}</div>
+            <div><strong>Location:</strong>{{ EventData.location }}</div>
+            <div><strong>Description:</strong>{{ EventData.description }}</div>
+        </div>
+    </div>
+</div>

@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<{ msg: string, userData: UserData}>('http://localhost:3000/api/user').subscribe(
+    this.http.get<{ msg: string, userData: UserData}>('http://192.168.2.78:3000/api/user').subscribe(
       (res) => {
         this.fname = res.userData.fname;
         this.lname = res.userData.lname;

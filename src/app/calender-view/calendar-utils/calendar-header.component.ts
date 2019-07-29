@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'mwl-demo-utils-calendar-header',
+  selector: 'app-demo-utils-calendar-header',
   template: `
     <div class="row text-center">
       <div class="col-md-4">
@@ -71,7 +71,7 @@ export class CalendarHeaderComponent {
 
   @Input() viewDate: Date;
 
-  @Input() locale: string = 'en';
+  @Input() locale = 'en';
 
   @Output() viewChange: EventEmitter<string> = new EventEmitter();
 
