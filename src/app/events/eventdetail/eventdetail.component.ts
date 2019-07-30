@@ -19,10 +19,8 @@ export class EventdetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.eventObs11 = this.eventService.getEventById(params.id);
-        //console.log(this.eventObs11);
-        
+        // console.log(this.eventObs11);
         console.log(params);
-        
       }
     );
 

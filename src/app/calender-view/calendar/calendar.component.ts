@@ -89,6 +89,7 @@ export class DemoComponent implements OnInit {
   eventClicked({ event }: { event: CalendarEvent }): void {
     console.log('Event clicked', event);
     this.eventService.eventId = event.id;
+    
     this.router.navigate(['/events/' + event.id]);
 
   }

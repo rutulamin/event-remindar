@@ -6,8 +6,8 @@
     <div class="row" style="margin-top: 10px" >
         <div class="col-12">
             <h2>Event Detail</h2>
-            <div><strong>Title:</strong>{{ EventData.title }}</div>
             <div><strong>Start Date:</strong>{{ EventData.startdate }}</div>
+            <div *ngIf="EventData.title"><strong>Title:</strong>{{ EventData?.title }}</div>
             <div><strong>End Date:</strong>{{ EventData.enddate }}</div>
             <div><strong>Location:</strong>{{ EventData.location }}</div>
             <div><strong>Description:</strong>{{ EventData.description }}</div>

@@ -9,6 +9,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { AuthGaurdService } from './auth/auth-gaurd.service';
 import { ProfileComponent } from './profile/profile.component';
 import { EventdetailComponent } from './events/eventdetail/eventdetail.component';
+import { EventResolverService } from './shared/event-resolver.service';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/events/new/event', pathMatch: 'full' },
@@ -21,7 +22,7 @@ const appRoutes: Routes = [
         ]
         },
         {
-            path: ':id', component: EventdetailComponent
+            path: ':id', component: EventdetailComponent, resolve: [EventResolverService]
         }
     ]
     },

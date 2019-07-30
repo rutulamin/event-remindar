@@ -21,6 +21,7 @@ import { MatTabsModule } from '@angular/material';
 import { DemoModule } from './calender-view/calendar/calendar.module';
 import { DemoUtilsModule } from './calender-view/calendar-utils/calendar-utils.module';
 import { EventdetailComponent } from './events/eventdetail/eventdetail.component';
+import { EventResolverService } from './shared/event-resolver.service';
 
 // export function momentAdapterFactory() {
 //   return adapterFactory(moment);
@@ -50,6 +51,7 @@ import { EventdetailComponent } from './events/eventdetail/eventdetail.component
     BrowserAnimationsModule,
   ],
   providers: [
+    EventResolverService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

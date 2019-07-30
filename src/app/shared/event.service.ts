@@ -43,6 +43,7 @@ export interface ResDataEvent2 {
   providedIn: 'root'
 })
 export class EventService {
+  paramObs = new Subject<string>();
 
   eventId: any = '';
   constructor(private http: HttpClient) { }
