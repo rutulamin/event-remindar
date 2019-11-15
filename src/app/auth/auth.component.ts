@@ -20,6 +20,7 @@ export class AuthComponent implements OnInit {
 
     onChangeMode() {
       this.isLoginMode = !this.isLoginMode;
+      console.log(this.isLoginMode);
     }
     onSubmit(f: NgForm) {
       if (this.isLoginMode) {
