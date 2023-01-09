@@ -27,7 +27,7 @@
     "date-fns": "^1.30.1",
     "moment-range": "^4.0.2",
     "moment-timezone": "^0.5.26",
-    "rrule": "^2.6.2",
+    "rrule": "^2.7.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
